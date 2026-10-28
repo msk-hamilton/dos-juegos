@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spanish Level 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF4FA;--surface:#fff;--ink:#1D2D50;--muted:#52627F;--line:#C3D2E6;--accent:#CF3A24;--focus:#1D6FEA;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E172E;--surface:#17233F;--ink:#EEF3FF;--muted:#A9B8D8;--line:#31456B;--accent:#FF7A5C;--focus:#8DBBFF;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E172E;--surface:#17233F;--ink:#EEF3FF;--muted:#A9B8D8;--line:#31456B;--accent:#FF7A5C;--focus:#8DBBFF;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:20px;line-height:1.4}
+.wrap{max-width:860px;margin:0 auto;padding:28px 18px 56px}
+h1,h2{font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;font-weight:600;margin:0}
+h1{font-size:clamp(38px,8vw,62px);line-height:1.05;margin-bottom:28px}
+h2{font-size:28px;margin:32px 0 12px}
+.cards{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:700px){.cards{grid-template-columns:1fr 1fr}}
+a.card{display:block;text-decoration:none;color:inherit;background:var(--surface);border:3px solid var(--ink);border-radius:24px;padding:18px 22px}
+a.card:hover{border-color:var(--accent)}
+a.card:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+a.card b{display:block;font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;font-weight:600;font-size:26px;line-height:1.15}
+a.card span{color:var(--muted);font-size:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Spanish Level 2</h1>
+
+  <!-- TO ADD A NEW WEEK: copy everything from the "WEEK" comment to the closing </div> below,
+       paste it ABOVE the Week 8 section (newest week first), and change the text and links. -->
+
+  <!-- WEEK 8 -->
+  <h2>Week 8: Almuerzo y cena</h2>
+  <div class="cards">
+    <!-- TO ADD A GAME: copy one <a class="card"> line and change the link, title and description. -->
+    <a class="card" href="juegos.html"><b>Juegos de vocabulario</b><span>¿Qué falta?, Escucha y señala, ¿Te gusta?</span></a>
+    <a class="card" href="restaurante.html"><b>Restaurante de la clase</b><span>Take the customers’ orders.</span></a>
+    <a class="card" href="mi-almuerzo.html"><b>Mi almuerzo</b><span>Assignment: make your lunch menu.</span></a>
+  </div>
+</div>
+</body>
+</html>
