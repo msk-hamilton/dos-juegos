@@ -102,23 +102,17 @@ input.title{font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;font-weight:
   <ol class="steps" id="steps"></ol>
 
   <div id="work">
-    <h2>1. Write the title</h2>
-    <div class="inwrap">
-      <input type="text" id="title" class="title" autocomplete="off" spellcheck="false" placeholder="Mi almuerzo" aria-label="Title">
-      <span class="mark" id="mk-title"></span>
-    </div>
-
-    <h2>2. Pick 3 foods</h2>
+    <h2>1. Pick 3 foods</h2>
     <div class="board"><div class="menu" id="menu"></div></div>
     <p class="count" id="count" aria-live="polite"></p>
 
     <div id="after" hidden>
-      <h2>3. Draw your 3 foods</h2>
+      <h2>2. Draw your 3 foods</h2>
       <div class="reflist" id="reflist"></div>
       <div class="tools" id="tools" role="group" aria-label="Drawing tools"></div>
       <div id="cvhold"></div>
 
-      <h2>4. Write the names in Spanish</h2>
+      <h2>3. Write the names in Spanish</h2>
       <div id="names"></div>
       <div class="letters" id="letters" role="group" aria-label="Special letters">
         <button type="button" data-ch="á">á</button><button type="button" data-ch="é">é</button><button type="button" data-ch="í">í</button><button type="button" data-ch="ó">ó</button><button type="button" data-ch="ú">ú</button><button type="button" data-ch="ñ">ñ</button>
@@ -166,7 +160,6 @@ input.title{font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;font-weight:
   function lower(s){return s.toLowerCase().replace(/\s+/g,' ').trim();}
 
   /* ----- checks ----- */
-  function titleOk(){return plain($('#title').value)==='mi almuerzo';}
   function nameLevel(id){
     var v=N[id]||'';if(!v.trim())return '';
     var f=byId(id),full=lower(f.es),bare=full.replace(/^(el|la) /,''),x=lower(v);
@@ -224,19 +217,10 @@ input.title{font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;font-weight:
   /* ----- steps ----- */
   function renderSteps(){
     var three=S.picks.length===3;
-    var d=[titleOk(),three,three&&cv.drawn,three&&namesDone()===3];
-    var labels=['Title','Pick 3','Draw','Names'];
+    var d=[three,three&&cv.drawn,three&&namesDone()===3];
+    var labels=['Pick 3','Draw','Names'];
     $('#steps').innerHTML=labels.map(function(l,i){return '<li class="'+(d[i]?'done':'')+'"><span class="n" aria-hidden="true">'+(d[i]?'✓':(i+1))+'</span>'+l+'</li>';}).join('');
   }
-
-  /* ----- title ----- */
-  $('#title').addEventListener('input',function(){
-    var v=this.value.trim(),m=$('#mk-title');
-    if(!v){m.textContent='';m.className='mark';}
-    else if(titleOk()){m.textContent='✓';m.className='mark';}
-    else{m.textContent='Mi almuerzo';m.className='mark maybe';}
-    renderSteps();
-  });
 
   /* ----- picker ----- */
   function renderMenu(){
@@ -309,7 +293,7 @@ input.title{font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;font-weight:
     ctx.strokeStyle='#1D2D50';ctx.lineWidth=10;ctx.strokeRect(20,20,CW-40,CH-40);
     ctx.lineWidth=3;ctx.strokeRect(38,38,CW-76,CH-76);
     ctx.fillStyle='#1D2D50';ctx.textAlign='center';ctx.textBaseline='alphabetic';
-    var title=$('#title').value.trim()||'Mi almuerzo';
+    var title='Mi almuerzo';
     fitText(ctx,title,860,100,44,'600');ctx.fillText(title,CW/2,165);
     ctx.drawImage(cv.c,40+0,215,920,Math.round(920*H/W));
     ctx.lineWidth=5;ctx.strokeRect(40,215,920,Math.round(920*H/W));
@@ -327,7 +311,6 @@ input.title{font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;font-weight:
       $('#finalimg').src=$('#final').toDataURL('image/png');
       $('#work').hidden=true;$('#result').hidden=false;
       var missing=[];
-      if(!titleOk())missing.push('the title');
       if(!cv.drawn)missing.push('the drawing');
       if(namesDone()<3)missing.push('the names');
       $('#saveinfo').textContent=(missing.length?'Still missing: '+missing.join(', ')+'. Tap “Keep working” to finish. ':'')+
